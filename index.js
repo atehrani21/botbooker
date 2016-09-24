@@ -1,7 +1,8 @@
 const express = require('express');
 
+const env = process.env.NODE_ENV || 'development';
 const app = express();
-const port = 3000;
+const config = require('./server/config/config')[env];
 
-app.listen(port);
-console.log(`Listening on port ${port}...`);
+app.listen(config.port);
+console.log(`Listening on port ${config.port}...`);

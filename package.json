@@ -4,7 +4,8 @@
   "description": "FB messenger integrated chat bot that simplifies the use of booking community shared utilities such as a laundromat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,12 @@
   },
   "homepage": "https://github.com/jrschwarz/hackcooper2016#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.75.0"
+  },
+  "engines": {
+    "node": "6.3.x",
+    "npm": "3.10.x"
   }
 }
