@@ -63,9 +63,9 @@ module.exports = {
         "payload": {
           "template_type": "generic",
           "elements": [{
-            "title": "DATE",
-            "subtitle": "TIME",
-            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "title": availability.time.date,
+            "subtitle": availability.time.time,
+            "image_url": availability.img_url,
             "buttons": [{
               "type": "postback",
               "title": "Confirm",
