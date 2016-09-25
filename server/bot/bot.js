@@ -20,8 +20,7 @@ module.exports = {
                 console.log('Error: ', response.body.error);
             }
         })
-    }
-
+    },
     sendGenericMessage: function (sender) {
         let messageData = {
             "attachment": {
