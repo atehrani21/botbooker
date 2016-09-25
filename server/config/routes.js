@@ -23,8 +23,8 @@ module.exports = function(app, config) {
   		let event = req.body.entry[0].messaging[i]
   		let sender = event.sender.id.toString();
   		if (event.message && event.message.text) {
-  			let text = event.message.text
-  			if (text === 'Generic') {
+  			let text = event.message.text.toLowerCase();
+  			if (text === 'generic') {
   				bot.sendGenericMessage(sender)
   				continue
   			}
@@ -40,7 +40,7 @@ module.exports = function(app, config) {
           })
           continue
   			}
-  			if (text === 'Gordon Levitt') {
+  			if (text === 'gordon levitt') {
   				bot.sendUniqueMessage(sender, "You have selected Gordon. His available dates are x, y, z. please pick one")
   				continue
   			}
