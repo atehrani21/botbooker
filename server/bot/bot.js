@@ -69,7 +69,7 @@ module.exports = {
         }
 
         availability.forEach(function(availability) {
-          messageData.payload.elements.push ({
+          messageData.attachment.payload.elements.push ({
               "title": availability.date,
               "subtitle": availability.time.time,
               "image_url": availability.img_url,
