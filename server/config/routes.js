@@ -33,8 +33,8 @@ module.exports = function(app, config) {
   				continue
   			}
   			if (text === 'haircut') {
-  				bot.sendUniqueMessage(sender, "There are 5 hair stylists available now. Please select your favourite:")
-  				bot.sendQuickReplyMessage(sender)
+          bot.sendQuickReplyMessage(sender)
+  				bot.sendUniqueMessage(sender, "There are 5 hair stylists available now.")
   				continue
   			}
   			if (text === 'Gordon Levitt') {
@@ -45,11 +45,11 @@ module.exports = function(app, config) {
   				bot.sendUniqueMessage(sender, "You have selected " + text + " . Thank you!")
   			}
   		}
-  		if (event.postback) {
-  			let text = JSON.stringify(event.postback)
-  			bot.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-  			continue
-  		}
+  		// if (event.postback) {
+  		// 	let text = JSON.stringify(event.postback)
+  		// 	bot.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+  		// 	continue
+  		// }
   	}
   	res.sendStatus(200)
   });
