@@ -9,6 +9,7 @@ const config = require('./server/config/config')[env];
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(express.static('public'))
 
 // Setup db and open connection
 require('./server/config/mongoose')(config);
