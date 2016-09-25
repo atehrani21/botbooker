@@ -1,12 +1,13 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var schema = mongoose.Schema({
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+const schema = mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   date: Date,
-  times: [{
+  time: {
       time: String,
       avail: Boolean
-    }]
+  },
+  img_url: String
 });
 
-module.exports = mongoose.model('Availabilty', schema);
+module.exports = mongoose.model('Availability', schema);

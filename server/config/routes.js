@@ -52,5 +52,5 @@ module.exports = function(app, config) {
   		}
   	}
   	res.sendStatus(200)
-  })
+  });
 }
