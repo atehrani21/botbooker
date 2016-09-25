@@ -39,7 +39,7 @@ module.exports = function(app, config) {
           })
           continue
   			}
-        if (text === 'John Doe' || text === 'Heather Greene' || text === 'Sarah Hathaway' || 'Nancy Drew') {
+        if (text === 'John Doe' || text === 'Heather Greene' || text === 'Sarah Hathaway' || text == 'Nancy Drew') {
           bot.sendGenericMessage(sender, text)
           curData = text;
           continue
