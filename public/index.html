@@ -120,7 +120,7 @@
                   </div>
                   <div class="modal-body text-center">
                     <div ng-repeat="avail in user.availability">
-                        <h4 ng-class="avail.time.avail ? 'crossthrough' : ''"> {{avail.date}} | {{avail.time.time}} </h4>
+                        <h4 ng-class="avail.time.avail ? '' : 'crossthrough'"> {{avail.date}} | {{avail.time.time}} </h4>
                     </div>
 
                   </div>
