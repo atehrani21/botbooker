@@ -2,7 +2,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require('request');
 
 const env = process.env.NODE_ENV || 'development';
 const app = express();

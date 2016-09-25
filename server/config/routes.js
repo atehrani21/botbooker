@@ -11,19 +11,28 @@ module.exports = function(app, config) {
 	app.route('/webhook/')
 		.get(function (req, res) {
 	    if (req.query['hub.verify_token'] === '0ber88399fllgjh8') {
-	        res.send(req.query['hub.challenge'])
+	        res.send(req.query['hub.challenge']);
 	    }
-	    res.send('Error, wrong token')
+	    res.send('Error, wrong token');
 		})
 		.post(function (req,res) {
-			let messaging_events = req.body.entry[0].messaging
+			let messaging_events = req.body.entry[0].messaging;
 	    for (let i = 0; i < messaging_events.length; i++) {
-	        let event = req.body.entry[0].messaging[i];
-	        let sender = event.sender.id;
-	        if (event.message && event.message.text) {
-	            let text = event.message.text;
-	            bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+	      let event = req.body.entry[0].messaging[i];
+	      let sender = event.sender.id;
+	      if (event.message && event.message.text) {
+	        let text = event.message.text;
+	        if (text === 'Generic') {
+	            sendGenericMessage(sender);
+	            continue;
 	        }
+	        sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+	      }
+	      if (event.postback) {
+	        let text = JSON.stringify(event.postback);
+	        sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token);
+	        continue;
+	      }
 	    }
 	    res.sendStatus(200);
 		});
