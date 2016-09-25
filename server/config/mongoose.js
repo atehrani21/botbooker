@@ -20,14 +20,15 @@ module.exports = function(config) {
 			firstname: "John",
 			lastname: "Doe",
 			phonenum: "0123456789",
-			email: "jDoe123@gmail.com"
+			email: "jDoe123@gmail.com",
+			img: "https://media.timeout.com/images/102805001/image.jpg"
 		});
 		user1.save(function(err, user) { user1.id = user.id});
 
 		Availability.create({
 			user: user1.id,
 			date: Date.now(),
-			times:
+			time:
 				{
 					time: "10:00",
 					avail: true

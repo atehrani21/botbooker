@@ -1,4 +1,5 @@
 const bot = require('../bot/bot');
+const funcs = require('../db/functions');
 
 module.exports = function(app, config) {
 
@@ -29,13 +30,15 @@ module.exports = function(app, config) {
   			}
   			bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
   			if (text === 'hi') {
-  				bot.sendUniqueMessage(sender, "hi, i'm test bot, what can i do for you?")
+  				bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
   				continue
   			}
   			if (text === 'haircut') {
-          bot.sendQuickReplyMessage(sender)
-  				bot.sendUniqueMessage(sender, "There are 5 hair stylists available now.")
-  				continue
+          funcs.getAvailableUsers(function(number) {
+            bot.sendQuickReplyMessage(sender)
+    				bot.sendUniqueMessage(sender, `There are ${number} hair stylists available now.`);
+          })
+          continue
   			}
   			if (text === 'Gordon Levitt') {
   				bot.sendUniqueMessage(sender, "You have selected Gordon. His available dates are x, y, z. please pick one")
