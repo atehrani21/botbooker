@@ -56,8 +56,8 @@ module.exports = {
     })
   },
 
-  sendGenericMessage: function(sender, user_id) {
-    funcs.getAvailability(user_id, function(err, availability){
+  sendGenericMessage: function(sender, user) {
+    funcs.getAvailabilityByName(user.split(' ')[0], user.split(' ')[1], function(err, availability){
       let messageData = {
         "attachment": {
           "type": "template",

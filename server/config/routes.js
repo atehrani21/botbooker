@@ -23,30 +23,25 @@ module.exports = function(app, config) {
   		let event = req.body.entry[0].messaging[i]
   		let sender = event.sender.id.toString();
   		if (event.message && event.message.text) {
-  			let text = event.message.text.toLowerCase();
+  			let text = event.message.text;
 
   			// bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-  			if (text === 'hi') {
+  			if (text.toLowerCase() === 'hi') {
   				bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
   				continue
   			}
-  			if (text === 'haircut') {
+  			if (text.toLowerCase() === 'haircut') {
           funcs.getAvailableUsers(function(avails) {
             bot.sendQuickReplyMessage(sender)
     				bot.sendUniqueMessage(sender, `There are ${avails.length} hair stylists available now.`);
           })
           continue
   			}
-        // if (text === 'John Doe' || 'Gordon Levitt') {
-        //   bot.sendGenericMessage(sender)
-        //   continue
-        // }
-        if (event) {
-          console.log(event);
-          bot.sendGenericMessage(sender, event.postback.payload.split('_')[1])
+        if (text === 'John Doe') {
+          bot.sendGenericMessage(sender, text)
           continue
         }
-  			if (text === 'Confirm') {
+  			if (text.toLowerCase() === 'confirm') {
   				bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
   				continue
   			}

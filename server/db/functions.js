@@ -27,6 +27,13 @@ module.exports = {
     });
   },
 
+  getAvailabilityByName: function(firstname, lastname, callback) {
+    Availability.findOne({'firstname': firstname, 'lastname': lastname})
+    .exec(function(err, availability) {
+      callback(err, availability);
+    });
+  },
+
   updateAvailability: function(user, date, time, avail, callback) {
     Availability.update({
       'user': user,
