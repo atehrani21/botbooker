@@ -28,7 +28,7 @@ module.exports = {
   },
 
   getAvailabilityByName: function(firstname, lastname, callback) {
-    console.log("first name: "+ firstname, lastname);
+    //console.log("first name: "+ firstname, lastname);
     User.findOne({'firstname': firstname, 'lastname': lastname})
     .exec(function(err, user) {
 
@@ -42,16 +42,19 @@ module.exports = {
   },
 
   updateAvailability: function(user, date, time, avail, callback) {
-    Availability.update({
-      'user': user,
-      'date': date,
-      'time.time': time
-    },
-    {
-      'time.avail': avail
-    },
-    function(err, availability) {
-      callback(err, availability);
+    User.findOne({'firstname': user.split(' ')[0], 'lastname': user.split(' ')[1]})
+    .exec(function(err, user) {
+        Availability.update({
+          'user': user.id,
+          'date': date,
+          'time.time': time
+        },
+        {
+          'time.avail': avail
+        },
+        function(err, availability) {
+          callback(err, availability);
+        });
     });
   }
 }
