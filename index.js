@@ -10,6 +10,7 @@ const config = require('./server/config/config')[env];
 
 // Setup db and open connection
 require('./server/config/mongoose')(config);
+
 // Configure routes
 require('./server/config/routes')(app, config);
 
