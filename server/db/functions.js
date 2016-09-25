@@ -28,7 +28,7 @@ module.exports = {
   },
 
   getAvailabilityByName: function(firstname, lastname, callback) {
-    console.log(firstname, lastname);
+    console.log("first name: "+ firstname, lastname);
     User.findOne({'firstname': firstname, 'lastname': lastname})
     .exec(function(err, user) {
 

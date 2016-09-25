@@ -52,7 +52,6 @@ module.exports = function(app, config) {
               console.log(availability);
             })
           }
-  				continue
   			}
   		}
   		// if (event.postback.payload) {
