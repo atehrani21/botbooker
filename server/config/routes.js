@@ -20,39 +20,38 @@ module.exports = function(app, config) {
 
   // to post data
   app.post('/webhook/', function(req, res) {
-      let messaging_events = req.body.entry[0].messaging
-      for (let i = 0; i < messaging_events.length; i++) {
-        let event = req.body.entry[0].messaging[i]
-        let sender = event.sender.id.toString();
-        if (event.message && event.message.text) {
-          let text = event.message.text;
+    let messaging_events = req.body.entry[0].messaging
+    for (let i = 0; i < messaging_events.length; i++) {
+      let event = req.body.entry[0].messaging[i]
+      let sender = event.sender.id.toString();
+      if (event.message && event.message.text) {
+        let text = event.message.text;
 
-          // bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-          if (text.toLowerCase() == 'hi') {
-            bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
-            continue
-          }
-          if (text.toLowerCase() == 'haircut') {
-            funcs.getAvailableUsers(function(avails) {
-              bot.sendQuickReplyMessage(sender)
-              bot.sendUniqueMessage(sender, `There are ${avails.length} hair stylists available now.`);
-            })
-            continue
-          }
-          if (text === 'John Doe' || text === 'Heather Greene' || text === 'Sarah Hathaway' || text === 'Nancy Drew') {
-            bot.sendGenericMessage(sender, text)
-            curData = text;
-            continue
-          }
+        // bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+        if (text.toLowerCase() == 'hi') {
+          bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
+          continue
+        }
+        if (text.toLowerCase() == 'haircut') {
+          funcs.getAvailableUsers(function(avails) {
+            bot.sendQuickReplyMessage(sender)
+            bot.sendUniqueMessage(sender, `There are ${avails.length} hair stylists available now.`);
+          })
+          continue
+        }
+        if (text === 'John Doe' || text === 'Heather Greene' || text === 'Sarah Hathaway' || text === 'Nancy Drew') {
+          bot.sendGenericMessage(sender, text)
+          curData = text;
+          continue
         }
       }
-      if (event.postback && event.postback.payload && event.postback.payload.split('_')[0] === 'CONFIRM') {
-        bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
-        funcs.updateAvailability(curData, event.postback.payload.split('_')[1], event.postback.payload.split('_')[2], !event.postback.payload.split('_')[3],
+    }
+    if (event.postback && event.postback.payload && event.postback.payload.split('_')[0] === 'CONFIRM') {
+      bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
+      funcs.updateAvailability(curData, event.postback.payload.split('_')[1], event.postback.payload.split('_')[2], !event.postback.payload.split('_')[3],
         function(err, availability) {
           curData.clear();
         })
-      }
     }
     res.sendStatus(200)
   });
