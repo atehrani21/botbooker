@@ -1,23 +1,23 @@
 const seeder = require('mongoose-seed');
+const config = require('../config/config')['development'];
 
-module.exports = function(config){
-  // Connect to MongoDB via Mongoose
-  seeder.connect(config.db, function() {
-      // Load Mongoose models
-      seeder.loadModels([
-          'server/models/availability.js',
-          'server/models/user.js'
-      ]);
-      // Clear specified collections
-      seeder.clearModels(['Availability', 'User'], function() {
-          // Callback to populate DB once collections have been cleared
-          seeder.populateModels(data, function(){
-            console.log("DB ready");
-          });
+// Connect to MongoDB via Mongoose
+seeder.connect(config.db, function() {
+    // Load Mongoose models
+    seeder.loadModels([
+        'server/models/availability.js',
+        'server/models/user.js'
+    ]);
 
-      });
-  });
-}
+    // Clear specified collections
+    seeder.clearModels(['Availability', 'User'], function() {
+        // Callback to populate DB once collections have been cleared
+        seeder.populateModels(data, function(){
+            process.exit(1);
+        });
+
+    });
+});
 
 // Data array containing seed data - documents organized by Model
 var data = [
