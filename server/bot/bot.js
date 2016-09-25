@@ -64,7 +64,7 @@ module.exports = {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": availability.time.date,
+              "title": availability.date,
               "subtitle": availability.time.time,
               "image_url": availability.img_url,
               "buttons": [{
