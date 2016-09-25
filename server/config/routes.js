@@ -25,7 +25,7 @@ module.exports = function(app, config) {
   		if (event.message && event.message.text) {
   			let text = event.message.text.toLowerCase();
 
-  			bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+  			// bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
   			if (text === 'hi') {
   				bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
   				continue
