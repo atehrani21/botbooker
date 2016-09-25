@@ -37,7 +37,7 @@ module.exports = function(app, config) {
           })
           continue
   			}
-        if (text === 'john doe' || 'gordon levitt') {
+        if (text === 'John Doe' || 'Gordon Levitt') {
           bot.sendGenericMessage(sender)
           continue
         }
