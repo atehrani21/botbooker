@@ -50,7 +50,7 @@ module.exports = function(app, config) {
         bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
         funcs.updateAvailability(curData, event.postback.payload.split('_')[1], event.postback.payload.split('_')[2], !event.postback.payload.split('_')[3],
           function(err, availability) {
-            curData.clear();
+            curData = null;
           })
       }
     }
