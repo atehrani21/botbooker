@@ -14,27 +14,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/test', function(req,res) {
-    funcs.getAvailableUsers(function(users) {
-      let messageData = {
-      "text": "Pick a hairstylist:",
-      "quick_replies": []
-      }
-      console.log(users);
-      users.forEach(function(user) {
-        console.log(user);
-        messageData.quick_replies.push({
-          "content_type": "text",
-          "title": `${user["firstname"]} ${user["lastname"]}`,
-          "id": user["_id"],
-          "payload": `DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_${user["firstname"].toUpperCase()}`
-        })
-      })
-      res.send(messageData);
-      //res.send(users);
-    });
-  })
-
   app.put('/api/update-user/:user', function(req,res){
     funcs.updateAvailability(
       req.params.user,

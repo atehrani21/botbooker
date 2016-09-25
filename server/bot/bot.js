@@ -115,7 +115,7 @@ module.exports = {
         messageData.quick_replies.push({
           "content_type": "text",
           "title": `${user["firstname"]} ${user["lastname"]}`,
-          "id": user["_id"],
+          //"id": user["_id"],
           "payload": `DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_${user["firstname"].toUpperCase()}`
         })
       })
@@ -138,6 +138,6 @@ module.exports = {
           console.log('Error: ', response.body.error)
         }
       })
-    })
+    });
   }
 }
