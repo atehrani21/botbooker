@@ -28,11 +28,15 @@ module.exports = {
   },
 
   getAvailabilityByName: function(firstname, lastname, callback) {
-    User.findOne({'firstname': firstname, 'lastname': lastname}, function(err, user) {
-      Availability.find({'user': user.id})
-      .exec(function(err, availability) {
-        callback(err, availability);
-      });
+    console.log(firstname, lastname);
+    User.findOne({'firstname': firstname, 'lastname': lastname})
+    .exec(function(err, user) {
+
+        Availability.find({'user': user.id})
+        .exec(function(err, availability) {
+          callback(err, availability);
+        });
+
     });
 
   },
