@@ -1,4 +1,4 @@
-const token = process.env.FBMESSENGER_TOKEN;
+const token = "EAAZANR29Wi50BAPU2KL6x4KE6ZCoIJPGdPfvw2s4RftBNOj97JzAD48ytOSNGlk4fZCAeZAzc9rUWW2COrhnRCa7tMuoA7HEHPJHiVqOJL7UK1omlUS2lZANiGAkKtJ99ZCIRBVqNOPXYpgDbxztAa63PtYYgIkIr7eYDRU2Y7LQZDZD";
 const request = require('request');
 
 module.exports = {
