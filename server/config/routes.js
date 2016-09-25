@@ -41,7 +41,8 @@ module.exports = function(app, config) {
         //   bot.sendGenericMessage(sender)
         //   continue
         // }
-        if (event.postback && event.postback.payload && event.postback.payload.split('_')[0] == "USERID") {
+        if (event) {
+          console.log(event);
           bot.sendGenericMessage(sender, event.postback.payload.split('_')[1])
           continue
         }
