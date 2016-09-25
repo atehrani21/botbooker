@@ -24,10 +24,7 @@ module.exports = function(app, config) {
   		let sender = event.sender.id.toString();
   		if (event.message && event.message.text) {
   			let text = event.message.text.toLowerCase();
-  			if (text === 'generic') {
-  				bot.sendGenericMessage(sender)
-  				continue
-  			}
+
   			bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
   			if (text === 'hi') {
   				bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
@@ -40,12 +37,13 @@ module.exports = function(app, config) {
           })
           continue
   			}
-  			if (text === 'gordon levitt') {
-  				bot.sendUniqueMessage(sender, "You have selected Gordon. His available dates are x, y, z. please pick one")
+        if (text === 'john doe' || 'gordon levitt') {
+          bot.sendGenericMessage(sender)
+          continue
+        }
+  			if (text === 'Confirm') {
+  				bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
   				continue
-  			}
-  			if (text === 'x' || 'y' || 'z') {
-  				bot.sendUniqueMessage(sender, "You have selected " + text + " . Thank you!")
   			}
   		}
   		// if (event.postback) {
