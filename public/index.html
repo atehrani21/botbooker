@@ -111,7 +111,7 @@
             <!-- Modal -->
             <div id="hi" class="modal fade" role="dialog">
               <div class="modal-dialog">
-      
+
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
@@ -153,15 +153,15 @@
                       <tr>
                         <td>8AM - 9AM</td>
                       </tr>
-                      
+
                     </table>
-                    
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
-    
+
               </div>
             </div>
           </div>
@@ -172,14 +172,14 @@
     <script>
       var app = angular.module('myApp', []);
       app.controller('customersCtrl', function($scope, $http) {
-        $http.get("http://botbooker.herokuapp.com/api/get-users")
+        $http.get("/api/get-users")
           .then(function (response) {
             console.log(response.data);
             //$scope.users = response.data.records;
           });
       });
     </script>
-    
+
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
