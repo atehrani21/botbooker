@@ -1,6 +1,8 @@
 const bot = require('../bot/bot');
 const funcs = require('../db/functions');
 
+var curData;
+
 module.exports = function(app, config) {
 
   // Index route
@@ -37,12 +39,19 @@ module.exports = function(app, config) {
           })
           continue
   			}
-        if (text === 'John Doe') {
+        if (text === 'John Doe' || text === 'Heather Greene' || text === 'Sarah Hathaway' || 'Nancy Drew') {
           bot.sendGenericMessage(sender, text)
+          curData = text;
           continue
         }
   			if (text === 'Confirm') {
   				bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
+          if(event.postback && event.postback.payload){
+            funcs.updateAvailability(curData, event.postback.payload.split('_')[0], event.postback.payload.split('_')[1], !event.postback.payload.split('_')[2],
+            function(err, availability) {
+              console.log(availability);
+            })
+          }
   				continue
   			}
   		}

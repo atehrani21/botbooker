@@ -76,7 +76,7 @@ module.exports = {
               "buttons": [{
                 "type": "postback",
                 "title": "Confirm",
-                "payload": "Payload for first element in a generic bubble",
+                "payload": `${availability.date}_${availability.time.time}_${availability.time.avail}`,
               }]
           });
         });
