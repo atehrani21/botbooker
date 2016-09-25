@@ -117,7 +117,7 @@ module.exports = {
         messageData.quick_replies.push({
           "content_type": "text",
           "title": `${user["firstname"]} ${user["lastname"]}`,
-          "payload": `${user["id"]}`
+          "payload": `USERID_${user["id"]}`
         })
       });
       request({
