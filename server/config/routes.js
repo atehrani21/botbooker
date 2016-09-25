@@ -46,6 +46,7 @@ module.exports = function(app, config) {
         }
   			if (text === 'Confirm') {
   				bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
+          console.log("postback : ", event.postback)
           if(event.postback && event.postback.payload){
             console.log("payload: ", event.postback.payload);
             funcs.updateAvailability(curData, event.postback.payload.split('_')[0], event.postback.payload.split('_')[1], !event.postback.payload.split('_')[2],
