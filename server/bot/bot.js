@@ -76,7 +76,7 @@ module.exports = {
               "buttons": [{
                 "type": "postback",
                 "title": "Confirm",
-                "payload": `${availability.date}_${availability.time.time}_${availability.time.avail}`,
+                "payload": `CONFIRM_${availability.date}_${availability.time.time}_${availability.time.avail}`,
               }]
           });
         });
