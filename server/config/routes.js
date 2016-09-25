@@ -5,7 +5,7 @@ module.exports = function(app, config) {
 
   // Index route
   app.get('/', function (req, res) {
-    res.send('hello world i am a secret bot');
+    res.sendFile(config.rootPath + '/public/index.html');
   });
 
   // for facebook verification
