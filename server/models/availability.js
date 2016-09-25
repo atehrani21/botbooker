@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  date: Date,
+  date: String,
   time: {
       time: String,
       avail: Boolean

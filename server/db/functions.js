@@ -29,7 +29,7 @@ module.exports = {
 
   getAvailabilityByName: function(firstname, lastname, callback) {
     User.findOne({'firstname': firstname, 'lastname': lastname}, function(err, user) {
-      Availability.findOne({'user': user.id})
+      Availability.find({'user': user.id})
       .exec(function(err, availability) {
         callback(err, availability);
       });

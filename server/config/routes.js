@@ -26,11 +26,11 @@ module.exports = function(app, config) {
   			let text = event.message.text;
 
   			// bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-  			if (text.toLowerCase() === 'hi') {
+  			if (text.toLowerCase() == 'hi') {
   				bot.sendUniqueMessage(sender, "Hi, i'm your Bot Booker assistant, what can I do for you?")
   				continue
   			}
-  			if (text.toLowerCase() === 'haircut') {
+  			if (text.toLowerCase() == 'haircut') {
           funcs.getAvailableUsers(function(avails) {
             bot.sendQuickReplyMessage(sender)
     				bot.sendUniqueMessage(sender, `There are ${avails.length} hair stylists available now.`);
@@ -41,7 +41,7 @@ module.exports = function(app, config) {
           bot.sendGenericMessage(sender, text)
           continue
         }
-  			if (text.toLowerCase() === 'confirm') {
+  			if (text === 'Confirm') {
   				bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
   				continue
   			}

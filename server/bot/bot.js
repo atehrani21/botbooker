@@ -63,7 +63,13 @@ module.exports = {
           "type": "template",
           "payload": {
             "template_type": "generic",
-            "elements": [{
+            "elements": [],
+            }
+          }
+        }
+
+        availability.forEach(function(availability) {
+          messageData.payload.elements.push ({
               "title": availability.date,
               "subtitle": availability.time.time,
               "image_url": availability.img_url,
@@ -71,19 +77,9 @@ module.exports = {
                 "type": "postback",
                 "title": "Confirm",
                 "payload": "Payload for first element in a generic bubble",
-              }],
-            }, {
-              "title": "DATE",
-              "subtitle": "TIME",
-              "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-              "buttons": [{
-                "type": "postback",
-                "title": "Confirm",
-                "payload": "Payload for second element in a generic bubble",
-              }],
-            }]
-          }
-        }
+              }]
+          });
+        })
       }
       request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
