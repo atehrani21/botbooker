@@ -115,10 +115,10 @@ module.exports = {
         messageData.quick_replies.push({
           "content_type": "text",
           "title": `${user["firstname"]} ${user["lastname"]}`,
-          // "id": user["_id"],
+          "user_id": user["_id"],
           "payload": `DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_${user["firstname"].toUpperCase()}`
         })
-      })
+      });
       request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {

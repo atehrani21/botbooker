@@ -1,5 +1,8 @@
 const seeder = require('mongoose-seed');
-const config = require('../config/config')['development'];
+const mongoose = require('mongoose');
+const config = require('../config/config')['production'];
+
+const user1id = mongoose.Types.ObjectId();
 
 // Connect to MongoDB via Mongoose
 seeder.connect(config.db, function() {
@@ -25,6 +28,7 @@ var data = [
         'model': 'User',
         'documents': [
             {
+                "_id": user1id,
                 "firstname": "John",
                 "lastname": "Doe",
                 "phonenum": "1234567890",
@@ -37,7 +41,7 @@ var data = [
       'model': 'Availability',
       'documents': [
         {
-          "user": null,
+          "user": user1id,
           "date": 1474803107658,
           "time": {
              "time": "11:00",
