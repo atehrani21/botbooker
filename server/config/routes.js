@@ -45,13 +45,14 @@ module.exports = function(app, config) {
           continue
         }
       }
-    }
-    if (event.postback && event.postback.payload && event.postback.payload.split('_')[0] === 'CONFIRM') {
-      bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
-      funcs.updateAvailability(curData, event.postback.payload.split('_')[1], event.postback.payload.split('_')[2], !event.postback.payload.split('_')[3],
-        function(err, availability) {
-          curData.clear();
-        })
+
+      if (event && event.postback && event.postback.payload && event.postback.payload.split('_')[0] === 'CONFIRM') {
+        bot.sendUniqueMessage(sender, "Thank you for making an appointment!")
+        funcs.updateAvailability(curData, event.postback.payload.split('_')[1], event.postback.payload.split('_')[2], !event.postback.payload.split('_')[3],
+          function(err, availability) {
+            curData.clear();
+          })
+      }
     }
     res.sendStatus(200)
   });
