@@ -13,8 +13,11 @@ app.use(bodyParser.json())
 // Setup db and open connection
 require('./server/config/mongoose')(config);
 
-// Configure routes
+// Configure generic routes
 require('./server/config/routes')(app, config);
+
+// Configure api routes
+require('./server/config/api')(app);
 
 app.listen(config.port);
 console.log(`Listening on port ${config.port}...`);
