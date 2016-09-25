@@ -34,9 +34,9 @@ module.exports = function(app, config) {
   				continue
   			}
   			if (text === 'haircut') {
-          funcs.getAvailableUsers(function(number) {
+          funcs.getAvailableUsers(function(avails) {
             bot.sendQuickReplyMessage(sender)
-    				bot.sendUniqueMessage(sender, `There are ${number} hair stylists available now.`);
+    				bot.sendUniqueMessage(sender, `There are ${avails.length} hair stylists available now.`);
           })
           continue
   			}

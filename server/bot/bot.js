@@ -1,5 +1,6 @@
 const request = require('request');
 const token = "EAAC2cWwNCn4BANymEEllIfJfSOW9BGQ96LMwkUq0KVZB3PLI3dZBrQtusZBgPd66aXZBt36mZBwaTz0T3ZAyRFiMh7ZAQr5gYSScB0CR36LQ5mNH733WtxgRS2NQVThoPCX7VjrZBtY39MTwE4K4m7hwTxG97UjSVo2vurTKytqWuwZDZD";
+const funcs = require('../db/functions');
 
 module.exports = {
 
@@ -105,27 +106,19 @@ module.exports = {
   },
 
   sendQuickReplyMessage: function(sender) {
-    {
+    funcs.getAvailableUsers(function(users) {
       let messageData = {
         "text": "Pick a hairstylist:",
-        "quick_replies": [{
-          "content_type": "text",
-          "title": "Jane Lyliana",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_JANE"
-        }, {
-          "content_type": "text",
-          "title": "Gordon Levitt",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GORDON"
-        }, {
-          "content_type": "text",
-          "title": "Mike Mang",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_MIKE"
-        }, {
-          "content_type": "text",
-          "title": "Lulu Lex",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_LULU"
-        }]
+        "quick_replies": []
       }
+      users.forEach(function(user) {
+        messageData.quick_replies.push({
+          "content_type": "text",
+          "title": `${user["firstname"]} ${user["lastname"]}`,
+          "id": user["_id"],
+          "payload": `DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_${user["firstname"].toUpperCase()}`
+        })
+      })
       request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -145,6 +138,6 @@ module.exports = {
           console.log('Error: ', response.body.error)
         }
       })
-    }
+    })
   }
 }

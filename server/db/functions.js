@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Availability = require('../models/availability');
+var mongoose = require('mongoose');
 
 module.exports = {
   getAllUsers: function(callback) {
@@ -11,14 +12,12 @@ module.exports = {
 
   getAvailableUsers: function(callback) {
     let users = [];
-    Availability.find({'time.avail': true}, function(err, availabilities) {
-      for(var avail in availabilities) {
-        Users.find({'id': avail.user}, function(err, user) {
-          users.push(user);
-        })
-      }
-      callback(users.length);
-    })
+    Availability.find({'time.avail': true}).distinct('user', function(err, availabilities) {
+      User.find({'_id': { $in: availabilities.map(function(o){ return mongoose.Types.ObjectId(o); }) }})
+      .exec(function(err, users) {
+         callback(users);
+      });
+    });
   },
 
   getAvailability: function(user, callback) {
