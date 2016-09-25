@@ -28,10 +28,13 @@ module.exports = {
   },
 
   getAvailabilityByName: function(firstname, lastname, callback) {
-    Availability.findOne({'firstname': firstname, 'lastname': lastname})
-    .exec(function(err, availability) {
-      callback(err, availability);
+    User.findOne({'firstname': firstname, 'lastname': lastname}, function(err, user) {
+      Availability.findOne({'user': user.id})
+      .exec(function(err, availability) {
+        callback(err, availability);
+      });
     });
+
   },
 
   updateAvailability: function(user, date, time, avail, callback) {
