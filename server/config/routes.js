@@ -37,8 +37,12 @@ module.exports = function(app, config) {
           })
           continue
   			}
-        if (text === 'John Doe' || 'Gordon Levitt') {
-          bot.sendGenericMessage(sender)
+        // if (text === 'John Doe' || 'Gordon Levitt') {
+        //   bot.sendGenericMessage(sender)
+        //   continue
+        // }
+        if (event.postback.payload) {
+          bot.sendGenericMessage(sender, event.postback.payload)
           continue
         }
   			if (text === 'Confirm') {
@@ -46,7 +50,7 @@ module.exports = function(app, config) {
   				continue
   			}
   		}
-  		// if (event.postback) {
+  		// if (event.postback.payload) {
   		// 	let text = JSON.stringify(event.postback)
   		// 	bot.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
   		// 	continue

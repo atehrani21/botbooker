@@ -56,34 +56,36 @@ module.exports = {
     })
   },
 
-  sendGenericMessage: function(sender) {
-    let messageData = {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "generic",
-          "elements": [{
-            "title": availability.time.date,
-            "subtitle": availability.time.time,
-            "image_url": availability.img_url,
-            "buttons": [{
-              "type": "postback",
-              "title": "Confirm",
-              "payload": "Payload for first element in a generic bubble",
-            }],
-          }, {
-            "title": "DATE",
-            "subtitle": "TIME",
-            "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-            "buttons": [{
-              "type": "postback",
-              "title": "Confirm",
-              "payload": "Payload for second element in a generic bubble",
-            }],
-          }]
+  sendGenericMessage: function(sender, user_id) {
+    funcs.getAvailability(user_id, function(err, availability){
+      let messageData = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": availability.time.date,
+              "subtitle": availability.time.time,
+              "image_url": availability.img_url,
+              "buttons": [{
+                "type": "postback",
+                "title": "Confirm",
+                "payload": "Payload for first element in a generic bubble",
+              }],
+            }, {
+              "title": "DATE",
+              "subtitle": "TIME",
+              "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+              "buttons": [{
+                "type": "postback",
+                "title": "Confirm",
+                "payload": "Payload for second element in a generic bubble",
+              }],
+            }]
+          }
         }
       }
-    }
+    });
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {
@@ -115,7 +117,7 @@ module.exports = {
         messageData.quick_replies.push({
           "content_type": "text",
           "title": `${user["firstname"]} ${user["lastname"]}`,
-          "payload": `DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_${user["firstname"].toUpperCase()}`
+          "payload": `${user["id"]}`
         })
       });
       request({
