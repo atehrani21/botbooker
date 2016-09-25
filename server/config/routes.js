@@ -23,14 +23,14 @@ module.exports = function(app, config) {
 	      if (event.message && event.message.text) {
 	        let text = event.message.text;
 	        if (text === 'Generic') {
-	            sendGenericMessage(sender);
+	            bot.sendGenericMessage(sender);
 	            continue;
 	        }
-	        sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+	        bot.sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
 	      }
 	      if (event.postback) {
 	        let text = JSON.stringify(event.postback);
-	        sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token);
+	        bot.sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token);
 	        continue;
 	      }
 	    }
