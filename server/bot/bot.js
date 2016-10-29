@@ -1,5 +1,5 @@
 const request = require('request');
-const token = "EAAC2cWwNCn4BANymEEllIfJfSOW9BGQ96LMwkUq0KVZB3PLI3dZBrQtusZBgPd66aXZBt36mZBwaTz0T3ZAyRFiMh7ZAQr5gYSScB0CR36LQ5mNH733WtxgRS2NQVThoPCX7VjrZBtY39MTwE4K4m7hwTxG97UjSVo2vurTKytqWuwZDZD";
+const token = "EAAIvrP1hOZAoBACR8ZBGtWbfabj30jBhrvpEdqFa2jYTkurTQaaTCCl4ZADfKED6vSUmczhkZAAFupoI4D1kHZCmaBtsKDy8hasKN8om5hT8w9oJsqH3wU4y9rWs1scZBv146G5b6BaWZC8V8Yzqlf6byz12fkW9KTXZCRgZCK9SbDAZDZD";
 const funcs = require('../db/functions');
 
 module.exports = {
