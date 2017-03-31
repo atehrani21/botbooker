@@ -13,7 +13,7 @@
 FB Messenger Chat bot + Frontend Client Dashboard for automated bookings for small businesses.
 
 ### Inspiration
-Not knowing when is a good time to get a hair cut.
+Oftentimes, it is difficult to schedule convenient appointments that work for us due to overhead or lack of staff. But what if we knew who was available and scheduling without having to ever call the office? Botbooker is available 24/7 to assist users in scheduling their appointments at times that are most convenient for them. No longer do users have to wait to get in touch with a secretary to schedule appointments.
 
 ### What it does
 Removes the friction of maintenance and setting up of a booking system for small businesses that cannot afford electronic booking systems
